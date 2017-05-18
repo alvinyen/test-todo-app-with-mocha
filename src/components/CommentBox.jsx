@@ -5,6 +5,7 @@ class CommentBox extends Component {
         return (
             <div className="comment-box">
                 <textarea></textarea>
+                <button>submit</button>
             </div>
         );
     }
