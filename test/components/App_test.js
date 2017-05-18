@@ -3,11 +3,17 @@ import App from '../../src/components/App.jsx' ;
 
 //use 'descibe' to group together similar tests
 describe('App', () => {
+    let component ;
 
-    //use 'it' to test a single attribute of a target
-    it('shows the correct text', () => {
-        const component = renderComponent(App);
-        expect(component).to.contain('react simple starter');
+    beforeEach(() => {
+        component = renderComponent(App);
     });
 
+    it('has the correct class', () => {
+        expect(component).to.have.class('app');
+    });
+
+    it('has CommentBox', () => {
+        expect(component.find('.comment-box')).to.exist;
+    });
 });
