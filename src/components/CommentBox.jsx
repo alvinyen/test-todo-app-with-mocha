@@ -1,4 +1,7 @@
 import React, {Component} from 'react' ;
+import {connect} from 'react-redux' ;
+import {saveComment} from './../actions/comments.js'
+import * as actions from './../actions/comments.js' ;
 
 class CommentBox extends Component {
     constructor(props){
@@ -14,6 +17,7 @@ class CommentBox extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
+        this.props.saveComment(this.state.comment);
         this.setState({ comment: ''});
     }
 
@@ -31,4 +35,7 @@ class CommentBox extends Component {
     }
 }
 
-export default CommentBox ;
+// don't forget that the actionCreator that passed in component need to wrap in an object！！
+// export default connect(null, {saveComment})(CommentBox) ;
+// or just passed in whole object that using wildcard to import
+export default connect(null, actions)(CommentBox) ;
